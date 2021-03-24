@@ -14,8 +14,15 @@ body {
 }
 
 header {
-  padding: 1.5rem 1rem;
   background-color: #2b3945;
+  -webkit-box-shadow: 0 0 10px 0 #1e2b34;
+          box-shadow: 0 0 10px 0 #1e2b34;
+}
+
+header div {
+  width: 90%;
+  padding: 2rem 0;
+  margin: 0 auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -27,12 +34,13 @@ header {
           align-items: center;
 }
 
-header h1 {
+header div h1 {
   font-size: inherit;
   font-weight: 700;
 }
 
-header button {
+header div button {
+  cursor: pointer;
   color: inherit;
   border: none;
   font-size: 12px;
@@ -40,33 +48,34 @@ header button {
   background-color: transparent;
 }
 
-header button i {
+header div button:hover {
+  text-decoration: underline;
+}
+
+header div button i {
   margin-right: 0.5rem;
 }
 
 section {
-  margin: 1.5rem 0;
-  padding: 0 1.5rem;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
+  padding: 1.5rem 0;
 }
 
-section form {
+section div {
+  width: 90%;
+  margin: 0 auto;
+}
+
+section div form {
   width: 100%;
+  max-width: 480px;
   border-radius: 5px;
   overflow: hidden;
   position: relative;
+  -webkit-box-shadow: 0 0 10px 0 #1e2b34;
+          box-shadow: 0 0 10px 0 #1e2b34;
 }
 
-section form button {
+section div form button {
   color: white;
   font-size: 1rem;
   background-color: transparent;
@@ -78,47 +87,101 @@ section form button {
           transform: translateY(-50%);
 }
 
-section form input {
+section div form input {
   width: 100%;
   color: white;
   font-family: inherit;
+  font-size: 14px;
   padding: 0.8rem 4rem;
   background-color: #2b3945;
   border: none;
 }
 
-section form input::-webkit-input-placeholder {
+section div form input::-webkit-input-placeholder {
   color: inherit;
   font-size: 12px;
 }
 
-section form input:-ms-input-placeholder {
+section div form input:-ms-input-placeholder {
   color: inherit;
   font-size: 12px;
 }
 
-section form input::-ms-input-placeholder {
+section div form input::-ms-input-placeholder {
   color: inherit;
   font-size: 12px;
 }
 
-section form input::placeholder {
+section div form input::placeholder {
   color: inherit;
   font-size: 12px;
 }
 
-section select {
+section div select {
   font-family: inherit;
+  font-size: 12px;
   color: white;
-  margin: 2.5rem 0;
+  margin: 2.5rem 0 0 0;
   padding: 0.8rem 2rem 0.8rem 1rem;
   border: none;
   border-radius: 5px;
   background-color: #2b3945;
+  -webkit-box-shadow: 0 0 10px 0 #1e2b34;
+          box-shadow: 0 0 10px 0 #1e2b34;
 }
 
-section select option:hover {
-  color: #202c37;
+main .countries-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+main .countries-container .country {
+  width: 260px;
+  height: 330px;
+  border-radius: 5px;
+  margin: 2rem 2rem 2rem 2rem;
+  overflow: hidden;
+  background-color: #2b3945;
+  -webkit-box-shadow: 0 0 0 10px #1e2b34;
+          box-shadow: 0 0 0 10px #1e2b34;
+  text-decoration: none;
+  color: white;
+  -webkit-transition: all 0.1s linear;
+  transition: all 0.1s linear;
+}
+
+main .countries-container .country:hover {
+  -webkit-transform: scale(1.025);
+          transform: scale(1.025);
+}
+
+main .countries-container .country div:first-child {
+  width: 260px;
+  height: 160px;
+}
+
+main .countries-container .country div:first-child img {
+  width: 100%;
+  height: 100%;
+}
+
+main .countries-container .country div:last-child {
+  padding: 1rem;
+}
+
+main .countries-container .country div:last-child h2 {
+  font-size: 1.1rem;
+  margin: 0.5rem 0.5rem 1rem 0.5rem;
+}
+
+main .countries-container .country div:last-child p {
+  margin: 0.5rem;
 }
 
 .attribution {
@@ -128,5 +191,115 @@ section select option:hover {
 
 .attribution .attribution a {
   color: #3e52a3;
+}
+
+.light-theme body {
+  background-color: #fafafa;
+}
+
+.light-theme header {
+  color: #111517;
+  background-color: white;
+  border-bottom: 3px solid rgba(133, 133, 133, 0.1);
+}
+
+.light-theme section {
+  background-color: #fafafa;
+}
+
+.light-theme section div form {
+  -webkit-box-shadow: 0 0px 1px 0 #858585;
+          box-shadow: 0 0px 1px 0 #858585;
+}
+
+.light-theme section div form input {
+  color: #858585;
+  background-color: white;
+}
+
+.light-theme section div form button {
+  color: #858585;
+}
+
+.light-theme section div select {
+  color: #111517;
+  background-color: white;
+  -webkit-box-shadow: 0 0px 1px 0 #858585;
+          box-shadow: 0 0px 1px 0 #858585;
+}
+
+.light-theme main .countries-container {
+  background-color: #fafafa;
+}
+
+.light-theme main .countries-container .country {
+  color: #111517;
+  background-color: white;
+  -webkit-box-shadow: 0 0px 1px 0 #858585;
+          box-shadow: 0 0px 1px 0 #858585;
+}
+
+.light-theme main .countries-container .country div:first-child {
+  -webkit-box-shadow: 0 0px 1px 0 #858585;
+          box-shadow: 0 0px 1px 0 #858585;
+}
+
+@media (min-width: 768px) {
+  header div {
+    width: 75%;
+  }
+  header div h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+  header div button {
+    font-size: 1rem;
+  }
+  section {
+    margin: 1.5rem 0;
+  }
+  section div {
+    width: 75%;
+    margin: 0 auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  section div select {
+    margin: 0 0 0 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  header div {
+    width: 90%;
+  }
+  section div {
+    width: 90%;
+  }
+}
+
+@media (min-width: 1440px) {
+  header div {
+    width: 85%;
+  }
+  section div {
+    width: 85%;
+  }
+}
+
+@media (min-width: 1920px) {
+  header div {
+    width: 82%;
+  }
+  section div {
+    width: 82%;
+  }
 }
 /*# sourceMappingURL=style.css.map */
