@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap');
+
+$dt-dark-blue: hsl(209, 23%, 22%); //Dark Mode Elements
+$dt-very-dark-blue: hsl(207, 26%, 17%); //Dark Mode Background
+$lt-very-dark-blue: hsl(200, 15%, 8%); //Light Mode Text
+$lt-dark-gray: hsl(0, 0%, 52%); //Light Mode Input
+$lt-very-light-gray: hsl(0, 0%, 98%); //Light Mode Background
+$white: hsl(0, 0%, 100%); //Dark Mode Text & Light Mode Elements
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 14px;
+    color: $white;
+    background-color: $dt-very-dark-blue;
+}
+header {
+    padding: 1.5rem 1rem;
+    background-color: $dt-dark-blue;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    h1 {
+        font-size: inherit;
+        font-weight: 700;
+    }
+    button {
+        color: inherit;
+        border: none;
+        font-size: 12px;
+        font-weight: 300;
+        background-color: transparent;
+        i {
+            margin-right: 0.5rem;
+        }
+    }
+}
+section {
+    margin: 1.5rem 0;
+    padding: 0 1.5rem;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    form {
+        width: 100%;
+        border-radius: 5px;
+        overflow: hidden;
+        position: relative;
+        button {
+            color: $white;
+            font-size: 1rem;
+            background-color: transparent;
+            border: none;
+            position: absolute;
+            top: 50%;
+            left: 2rem;
+            transform: translateY(-50%);
+        }
+        input {
+            width: 100%;
+            color: $white;
+            font-family: inherit;
+            padding: 0.8rem 4rem;
+            background-color: $dt-dark-blue;
+            border: none;
+            &::placeholder {
+                color: inherit;
+                font-size: 12px;
+            }
+        }
+    }
+    select {
+        font-family: inherit;
+        color: $white;
+        margin: 2.5rem 0;
+        padding: 0.8rem 2rem 0.8rem 1rem;
+        border: none;
+        border-radius: 5px;
+        background-color: $dt-dark-blue;
+        option:hover {
+            color: $dt-very-dark-blue;
+        }
+    }
+}
+.attribution {
+    font-size: 11px;
+    text-align: center;
+    .attribution a {
+        color: hsl(228, 45%, 44%);
+    }
+}
