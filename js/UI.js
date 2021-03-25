@@ -1,7 +1,7 @@
 class UI {
     createCountry({ name, flag, population, region, capital }, container) {
         const html = `
-            <a href="" class="country" data.id="${name}">
+            <div class="country">
                 <div>
                     <img
                         src="${flag}"
@@ -14,7 +14,7 @@ class UI {
                     <p>Region: <span>${region}</span></p>
                     <p>Capital: <span>${capital}</span></p>
                 </div>
-            </a>
+            </div>
         `;
         container.insertAdjacentHTML('beforeend', html);
     }

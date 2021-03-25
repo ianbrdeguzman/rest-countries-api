@@ -10,6 +10,7 @@ class App {
             form: document.querySelector('form'),
             input: document.querySelector('input'),
             themeBtn: document.querySelector('header button'),
+            modal: document.querySelector('.modal'),
         };
     }
     setup() {
@@ -25,6 +26,7 @@ class App {
             ui.createCountry(countries, this.DOMElements.container);
         });
         Storage.storeCountries(countries);
+        this.showCountryDetail();
     }
     filterByRegion() {
         this.DOMElements.select.addEventListener('change', async (e) => {
@@ -56,6 +58,15 @@ class App {
                 document.querySelector('body'),
                 this.DOMElements.themeBtn
             );
+        });
+    }
+    showCountryDetail() {
+        const countries = document.querySelectorAll('.country');
+        countries.forEach((country) => {
+            country.addEventListener('click', (e) => {
+                console.log('clicked');
+                this.DOMElements.modal.classList.add('active');
+            });
         });
     }
 }

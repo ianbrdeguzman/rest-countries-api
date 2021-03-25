@@ -14,9 +14,15 @@ body {
 }
 
 header {
+  width: 100%;
+  min-height: 90px;
   background-color: #2b3945;
-  -webkit-box-shadow: 0 0 10px 0 #1e2b34;
-          box-shadow: 0 0 10px 0 #1e2b34;
+  -webkit-box-shadow: 0 0 10px 0 rgba(133, 133, 133, 0.1);
+          box-shadow: 0 0 10px 0 rgba(133, 133, 133, 0.1);
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 
 header div {
@@ -57,6 +63,7 @@ header div button i {
 }
 
 section {
+  margin-top: 90px;
   padding: 1.5rem 0;
 }
 
@@ -130,6 +137,22 @@ section div select {
           box-shadow: 0 0 10px 0 #1e2b34;
 }
 
+.modal {
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
+  background-color: #202c37;
+  overflow: hidden;
+  display: none;
+  position: fixed;
+  top: 90px;
+  left: 0;
+}
+
+.modal.active {
+  display: block;
+}
+
 main .countries-container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -142,6 +165,7 @@ main .countries-container {
 }
 
 main .countries-container .country {
+  cursor: pointer;
   width: 260px;
   height: 330px;
   border-radius: 5px;
@@ -169,6 +193,8 @@ main .countries-container .country div:first-child {
 main .countries-container .country div:first-child img {
   width: 100%;
   height: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
 }
 
 main .countries-container .country div:last-child {
@@ -200,7 +226,7 @@ main .countries-container .country div:last-child p {
 .light-theme header {
   color: #111517;
   background-color: white;
-  border-bottom: 3px solid rgba(133, 133, 133, 0.1);
+  border-bottom: 1px solid rgba(133, 133, 133, 0.1);
 }
 
 .light-theme section {
@@ -256,7 +282,7 @@ main .countries-container .country div:last-child p {
     font-size: 1rem;
   }
   section {
-    margin: 1.5rem 0;
+    padding: 1.5rem 0;
   }
   section div {
     width: 75%;
