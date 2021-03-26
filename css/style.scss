@@ -19,13 +19,13 @@ body {
     font-size: 14px;
     color: $white;
     background-color: $dt-very-dark-blue;
+    overflow-x: hidden;
 }
 header {
     width: 100%;
-    min-height: 90px;
     background-color: $dt-dark-blue;
     box-shadow: 0 0 10px 0 $lt-dark-gray-alpha;
-    z-index: 1000;
+    z-index: 2000;
     position: fixed;
     top: 0;
     left: 0;
@@ -57,7 +57,7 @@ header {
     }
 }
 section {
-    margin-top: 90px;
+    margin-top: 83px;
     padding: 1.5rem 0;
     div {
         width: 90%;
@@ -106,22 +106,96 @@ section {
         }
     }
 }
-.modal {
+.modal-container {
     width: 100vw;
-    height: 100vh;
+    min-height: 91vh;
     z-index: 1000;
     background-color: $dt-very-dark-blue;
-    overflow: hidden;
     display: none;
-    position: fixed;
-    top: 90px;
+    position: absolute;
+    top: 83px;
     left: 0;
     &.active {
         display: block;
     }
+    & > div {
+        width: 90%;
+        margin: 0 auto;
+        button {
+            cursor: pointer;
+            color: $white;
+            font-family: inherit;
+            margin: 3rem 0;
+            padding: 0.5rem 1.5rem;
+            border: none;
+            border-radius: 3px;
+            background-color: $dt-dark-blue;
+            box-shadow: 0 0 10px 0 $lt-very-dark-blue;
+            i {
+                margin-right: 1rem;
+            }
+        }
+        .country-detail {
+            width: 100%;
+            div:nth-child(1) {
+                width: 100%;
+                img {
+                    width: 100%;
+                    height: 100%;
+                    -o-object-fit: cover;
+                    object-fit: cover;
+                }
+            }
+            .country-info {
+                margin: 0;
+                width: 100%;
+                .info-one {
+                    div:nth-child(1) {
+                        margin: 2rem 0;
+                        p {
+                            margin: 1rem 0;
+                            &:last-child {
+                                margin-bottom: 0;
+                            }
+                        }
+                    }
+                    div:nth-child(2) {
+                        p {
+                            margin: 1rem 0;
+                        }
+                    }
+                }
+                .info-two {
+                    margin: 2rem 0;
+                    h3 {
+                        font-weight: 600;
+                    }
+                    p {
+                        margin: 1rem 0;
+                        display: flex;
+                        flex-wrap: wrap;
+                        justify-content: flex-start;
+                        span {
+                            display: block;
+                            flex-grow: 1;
+                            min-width: 80px;
+                            max-width: 80px;
+                            text-align: center;
+                            padding: 0.5rem;
+                            margin: 0.5rem 1rem 0.5rem 0;
+                            border-radius: 3px;
+                            background-color: $dt-dark-blue;
+                            box-shadow: 0 0 10px 0 $lt-very-dark-blue;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 main {
     .countries-container {
+        min-height: 100vh;
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
@@ -141,7 +215,7 @@ main {
                 transform: scale(1.025);
             }
             div:first-child {
-                width: 260px;
+                width: 100%;
                 height: 160px;
                 img {
                     width: 100%;
@@ -163,13 +237,6 @@ main {
         }
     }
 }
-.attribution {
-    font-size: 11px;
-    text-align: center;
-    .attribution a {
-        color: hsl(228, 45%, 44%);
-    }
-}
 .light-theme {
     body {
         background-color: $lt-very-light-gray;
@@ -181,6 +248,7 @@ main {
     }
     section {
         background-color: $lt-very-light-gray;
+        border: 1px solid $lt-very-light-gray;
         div {
             form {
                 box-shadow: 0 0px 1px 0 $lt-dark-gray;
@@ -196,6 +264,29 @@ main {
                 color: $lt-very-dark-blue;
                 background-color: $white;
                 box-shadow: 0 0px 1px 0 $lt-dark-gray;
+            }
+        }
+    }
+    .modal-container {
+        color: $lt-very-dark-blue;
+        background-color: $lt-very-light-gray;
+        div {
+            button {
+                color: $lt-very-dark-blue;
+                background-color: $white;
+                box-shadow: 0 0 10px 0 $lt-dark-gray-alpha;
+            }
+            .country-detail {
+                .country-info {
+                    div:nth-child(2) {
+                        p {
+                            span {
+                                background-color: $white;
+                                box-shadow: 0 0 10px 0 $lt-dark-gray-alpha;
+                            }
+                        }
+                    }
+                }
             }
         }
     }
@@ -239,6 +330,9 @@ main {
             }
         }
     }
+    .modal {
+        top: 96px;
+    }
 }
 @media (min-width: 1024px) {
     header {
@@ -247,8 +341,71 @@ main {
         }
     }
     section {
+        margin-top: 96px;
         div {
             width: 90%;
+        }
+    }
+    .modal-container {
+        & > div {
+            .country-detail {
+                margin-top: 4rem;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                & > div:nth-child(1) {
+                    width: 100%;
+                    height: 300px;
+                }
+                .country-info {
+                    margin: 0 0 0 3rem;
+                    width: 100%;
+                    height: 300px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    .info-one {
+                        display: flex;
+                        align-items: flex-start;
+                        div:nth-child(1) {
+                            margin: 0 3rem 0 0;
+                            height: auto;
+                            width: auto;
+                            p {
+                                margin: 0.5rem 0;
+                                &:nth-child(2) {
+                                    margin-top: 1rem;
+                                }
+                                &:last-child {
+                                    margin-bottom: 0;
+                                }
+                            }
+                        }
+                        div:nth-child(2) {
+                            margin-top: 2.5rem;
+                            p {
+                                margin: 0;
+                                &:nth-child(2) {
+                                    margin: 0.5rem 0;
+                                }
+                            }
+                        }
+                    }
+                    .info-two {
+                        margin: 1rem 0 0 0;
+                        h3 {
+                            font-weight: 600;
+                        }
+                        p {
+                            margin: 0;
+                            span {
+                                padding: 0.5rem;
+                                margin: 0.5rem 0.5rem 0 0;
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }
@@ -263,6 +420,42 @@ main {
             width: 85%;
         }
     }
+    .modal-container {
+        & > div {
+            width: 85%;
+            .country-detail {
+                & > div:nth-child(1) {
+                    height: 400px;
+                }
+                .country-info {
+                    margin: 0 0 0 8rem;
+                    height: 300px;
+                    .info-one {
+                        div:nth-child(1) {
+                            margin: 0 6rem 0 0;
+                            h2 {
+                                font-size: 2rem;
+                            }
+                            p {
+                                font-size: 1rem;
+                            }
+                        }
+                        div:nth-child(2) {
+                            margin-top: 3.5rem;
+                            p {
+                                font-size: 1rem;
+                            }
+                        }
+                    }
+                    .info-two {
+                        h3 {
+                            font-size: 1.2rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 @media (min-width: 1920px) {
     header {
@@ -273,6 +466,42 @@ main {
     section {
         div {
             width: 82%;
+        }
+    }
+    .modal-container {
+        & > div {
+            width: 82%;
+            .country-detail {
+                & > div:nth-child(1) {
+                    height: 400px;
+                }
+                .country-info {
+                    margin: 0 0 0 8rem;
+                    height: 300px;
+                    .info-one {
+                        div:nth-child(1) {
+                            margin: 0 6rem 0 0;
+                            h2 {
+                                font-size: 2rem;
+                            }
+                            p {
+                                font-size: 1rem;
+                            }
+                        }
+                        div:nth-child(2) {
+                            margin-top: 3.5rem;
+                            p {
+                                font-size: 1rem;
+                            }
+                        }
+                    }
+                    .info-two {
+                        h3 {
+                            font-size: 1.2rem;
+                        }
+                    }
+                }
+            }
         }
     }
 }

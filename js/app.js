@@ -10,7 +10,7 @@ class App {
             form: document.querySelector('form'),
             input: document.querySelector('input'),
             themeBtn: document.querySelector('header button'),
-            modal: document.querySelector('.modal'),
+            modal: document.querySelector('.modal-container'),
         };
     }
     setup() {
@@ -20,36 +20,48 @@ class App {
         this.changeTheme();
     }
     async fetchCountries() {
-        const countries = await api.fetchCountries();
-        this.DOMElements.container.innerHTML = '';
-        countries.forEach((countries) => {
-            ui.createCountry(countries, this.DOMElements.container);
-        });
-        Storage.storeCountries(countries);
-        this.showCountryDetail();
+        if (localStorage.getItem('countries')) {
+            const countries = Storage.getCountries();
+            countries.forEach((country) => {
+                ui.createCountry(country, this.DOMElements.container);
+            });
+            this.showCountryDetail();
+        } else {
+            const countries = await api.fetchCountries();
+            this.DOMElements.container.innerHTML = '';
+            countries.forEach((country) => {
+                ui.createCountry(country, this.DOMElements.container);
+            });
+            Storage.storeCountries(countries);
+            this.showCountryDetail();
+        }
     }
     filterByRegion() {
         this.DOMElements.select.addEventListener('change', async (e) => {
             this.DOMElements.container.innerHTML = '';
-            const countries = JSON.parse(
-                localStorage.getItem('countries')
-            ).filter((country) => {
-                return country.region == e.target.value;
-            });
+            const countries = Storage.getCountriesByRegion(e.target.value);
             countries.forEach((country) => {
                 ui.createCountry(country, this.DOMElements.container);
             });
+            this.showCountryDetail();
         });
     }
     searchCountry() {
         this.DOMElements.form.addEventListener('submit', async (e) => {
-            this.DOMElements.container.innerHTML = '';
             e.preventDefault();
-            const country = await api.searchCountry(
-                this.DOMElements.input.value
-            );
-            ui.createCountry(country, this.DOMElements.container);
-            this.DOMElements.form.reset();
+            if (!this.DOMElements.input.value) {
+                alert('Enter a country');
+            } else {
+                const country = await api.searchCountry(
+                    this.DOMElements.input.value
+                );
+                if (country) {
+                    this.DOMElements.container.innerHTML = '';
+                    ui.createCountry(country, this.DOMElements.container);
+                    this.DOMElements.form.reset();
+                    this.showCountryDetail();
+                }
+            }
         });
     }
     changeTheme() {
@@ -63,10 +75,24 @@ class App {
     showCountryDetail() {
         const countries = document.querySelectorAll('.country');
         countries.forEach((country) => {
-            country.addEventListener('click', (e) => {
-                console.log('clicked');
-                this.DOMElements.modal.classList.add('active');
+            country.addEventListener('click', () => {
+                ui.hideMainSection(
+                    this.DOMElements.modal,
+                    this.DOMElements.container
+                );
+                const countryDetails = Storage.findCountryDetail(country);
+                ui.createCountryModal(countryDetails, this.DOMElements.modal);
+                this.hideCountryDetail();
             });
+        });
+    }
+    hideCountryDetail() {
+        const backBtn = document.querySelector('.modal-container div button');
+        backBtn.addEventListener('click', () => {
+            ui.showMainSection(
+                this.DOMElements.modal,
+                this.DOMElements.container
+            );
         });
     }
 }

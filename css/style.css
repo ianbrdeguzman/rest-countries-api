@@ -11,15 +11,15 @@ body {
   font-size: 14px;
   color: white;
   background-color: #202c37;
+  overflow-x: hidden;
 }
 
 header {
   width: 100%;
-  min-height: 90px;
   background-color: #2b3945;
   -webkit-box-shadow: 0 0 10px 0 rgba(133, 133, 133, 0.1);
           box-shadow: 0 0 10px 0 rgba(133, 133, 133, 0.1);
-  z-index: 1000;
+  z-index: 2000;
   position: fixed;
   top: 0;
   left: 0;
@@ -63,7 +63,7 @@ header div button i {
 }
 
 section {
-  margin-top: 90px;
+  margin-top: 83px;
   padding: 1.5rem 0;
 }
 
@@ -137,23 +137,117 @@ section div select {
           box-shadow: 0 0 10px 0 #1e2b34;
 }
 
-.modal {
+.modal-container {
   width: 100vw;
-  height: 100vh;
+  min-height: 91vh;
   z-index: 1000;
   background-color: #202c37;
-  overflow: hidden;
   display: none;
-  position: fixed;
-  top: 90px;
+  position: absolute;
+  top: 83px;
   left: 0;
 }
 
-.modal.active {
+.modal-container.active {
   display: block;
 }
 
+.modal-container > div {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.modal-container > div button {
+  cursor: pointer;
+  color: white;
+  font-family: inherit;
+  margin: 3rem 0;
+  padding: 0.5rem 1.5rem;
+  border: none;
+  border-radius: 3px;
+  background-color: #2b3945;
+  -webkit-box-shadow: 0 0 10px 0 #111517;
+          box-shadow: 0 0 10px 0 #111517;
+}
+
+.modal-container > div button i {
+  margin-right: 1rem;
+}
+
+.modal-container > div .country-detail {
+  width: 100%;
+}
+
+.modal-container > div .country-detail div:nth-child(1) {
+  width: 100%;
+}
+
+.modal-container > div .country-detail div:nth-child(1) img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
+.modal-container > div .country-detail .country-info {
+  margin: 0;
+  width: 100%;
+}
+
+.modal-container > div .country-detail .country-info .info-one div:nth-child(1) {
+  margin: 2rem 0;
+}
+
+.modal-container > div .country-detail .country-info .info-one div:nth-child(1) p {
+  margin: 1rem 0;
+}
+
+.modal-container > div .country-detail .country-info .info-one div:nth-child(1) p:last-child {
+  margin-bottom: 0;
+}
+
+.modal-container > div .country-detail .country-info .info-one div:nth-child(2) p {
+  margin: 1rem 0;
+}
+
+.modal-container > div .country-detail .country-info .info-two {
+  margin: 2rem 0;
+}
+
+.modal-container > div .country-detail .country-info .info-two h3 {
+  font-weight: 600;
+}
+
+.modal-container > div .country-detail .country-info .info-two p {
+  margin: 1rem 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.modal-container > div .country-detail .country-info .info-two p span {
+  display: block;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  min-width: 80px;
+  max-width: 80px;
+  text-align: center;
+  padding: 0.5rem;
+  margin: 0.5rem 1rem 0.5rem 0;
+  border-radius: 3px;
+  background-color: #2b3945;
+  -webkit-box-shadow: 0 0 10px 0 #111517;
+          box-shadow: 0 0 10px 0 #111517;
+}
+
 main .countries-container {
+  min-height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -186,7 +280,7 @@ main .countries-container .country:hover {
 }
 
 main .countries-container .country div:first-child {
-  width: 260px;
+  width: 100%;
   height: 160px;
 }
 
@@ -210,15 +304,6 @@ main .countries-container .country div:last-child p {
   margin: 0.5rem;
 }
 
-.attribution {
-  font-size: 11px;
-  text-align: center;
-}
-
-.attribution .attribution a {
-  color: #3e52a3;
-}
-
 .light-theme body {
   background-color: #fafafa;
 }
@@ -231,6 +316,7 @@ main .countries-container .country div:last-child p {
 
 .light-theme section {
   background-color: #fafafa;
+  border: 1px solid #fafafa;
 }
 
 .light-theme section div form {
@@ -252,6 +338,24 @@ main .countries-container .country div:last-child p {
   background-color: white;
   -webkit-box-shadow: 0 0px 1px 0 #858585;
           box-shadow: 0 0px 1px 0 #858585;
+}
+
+.light-theme .modal-container {
+  color: #111517;
+  background-color: #fafafa;
+}
+
+.light-theme .modal-container div button {
+  color: #111517;
+  background-color: white;
+  -webkit-box-shadow: 0 0 10px 0 rgba(133, 133, 133, 0.1);
+          box-shadow: 0 0 10px 0 rgba(133, 133, 133, 0.1);
+}
+
+.light-theme .modal-container div .country-detail .country-info div:nth-child(2) p span {
+  background-color: white;
+  -webkit-box-shadow: 0 0 10px 0 rgba(133, 133, 133, 0.1);
+          box-shadow: 0 0 10px 0 rgba(133, 133, 133, 0.1);
 }
 
 .light-theme main .countries-container {
@@ -300,14 +404,95 @@ main .countries-container .country div:last-child p {
   section div select {
     margin: 0 0 0 1rem;
   }
+  .modal {
+    top: 96px;
+  }
 }
 
 @media (min-width: 1024px) {
   header div {
     width: 90%;
   }
+  section {
+    margin-top: 96px;
+  }
   section div {
     width: 90%;
+  }
+  .modal-container > div .country-detail {
+    margin-top: 4rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .modal-container > div .country-detail > div:nth-child(1) {
+    width: 100%;
+    height: 300px;
+  }
+  .modal-container > div .country-detail .country-info {
+    margin: 0 0 0 3rem;
+    width: 100%;
+    height: 300px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  .modal-container > div .country-detail .country-info .info-one {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+  }
+  .modal-container > div .country-detail .country-info .info-one div:nth-child(1) {
+    margin: 0 3rem 0 0;
+    height: auto;
+    width: auto;
+  }
+  .modal-container > div .country-detail .country-info .info-one div:nth-child(1) p {
+    margin: 0.5rem 0;
+  }
+  .modal-container > div .country-detail .country-info .info-one div:nth-child(1) p:nth-child(2) {
+    margin-top: 1rem;
+  }
+  .modal-container > div .country-detail .country-info .info-one div:nth-child(1) p:last-child {
+    margin-bottom: 0;
+  }
+  .modal-container > div .country-detail .country-info .info-one div:nth-child(2) {
+    margin-top: 2.5rem;
+  }
+  .modal-container > div .country-detail .country-info .info-one div:nth-child(2) p {
+    margin: 0;
+  }
+  .modal-container > div .country-detail .country-info .info-one div:nth-child(2) p:nth-child(2) {
+    margin: 0.5rem 0;
+  }
+  .modal-container > div .country-detail .country-info .info-two {
+    margin: 1rem 0 0 0;
+  }
+  .modal-container > div .country-detail .country-info .info-two h3 {
+    font-weight: 600;
+  }
+  .modal-container > div .country-detail .country-info .info-two p {
+    margin: 0;
+  }
+  .modal-container > div .country-detail .country-info .info-two p span {
+    padding: 0.5rem;
+    margin: 0.5rem 0.5rem 0 0;
   }
 }
 
@@ -318,6 +503,34 @@ main .countries-container .country div:last-child p {
   section div {
     width: 85%;
   }
+  .modal-container > div {
+    width: 85%;
+  }
+  .modal-container > div .country-detail > div:nth-child(1) {
+    height: 400px;
+  }
+  .modal-container > div .country-detail .country-info {
+    margin: 0 0 0 8rem;
+    height: 300px;
+  }
+  .modal-container > div .country-detail .country-info .info-one div:nth-child(1) {
+    margin: 0 6rem 0 0;
+  }
+  .modal-container > div .country-detail .country-info .info-one div:nth-child(1) h2 {
+    font-size: 2rem;
+  }
+  .modal-container > div .country-detail .country-info .info-one div:nth-child(1) p {
+    font-size: 1rem;
+  }
+  .modal-container > div .country-detail .country-info .info-one div:nth-child(2) {
+    margin-top: 3.5rem;
+  }
+  .modal-container > div .country-detail .country-info .info-one div:nth-child(2) p {
+    font-size: 1rem;
+  }
+  .modal-container > div .country-detail .country-info .info-two h3 {
+    font-size: 1.2rem;
+  }
 }
 
 @media (min-width: 1920px) {
@@ -326,6 +539,34 @@ main .countries-container .country div:last-child p {
   }
   section div {
     width: 82%;
+  }
+  .modal-container > div {
+    width: 82%;
+  }
+  .modal-container > div .country-detail > div:nth-child(1) {
+    height: 400px;
+  }
+  .modal-container > div .country-detail .country-info {
+    margin: 0 0 0 8rem;
+    height: 300px;
+  }
+  .modal-container > div .country-detail .country-info .info-one div:nth-child(1) {
+    margin: 0 6rem 0 0;
+  }
+  .modal-container > div .country-detail .country-info .info-one div:nth-child(1) h2 {
+    font-size: 2rem;
+  }
+  .modal-container > div .country-detail .country-info .info-one div:nth-child(1) p {
+    font-size: 1rem;
+  }
+  .modal-container > div .country-detail .country-info .info-one div:nth-child(2) {
+    margin-top: 3.5rem;
+  }
+  .modal-container > div .country-detail .country-info .info-one div:nth-child(2) p {
+    font-size: 1rem;
+  }
+  .modal-container > div .country-detail .country-info .info-two h3 {
+    font-size: 1.2rem;
   }
 }
 /*# sourceMappingURL=style.css.map */
