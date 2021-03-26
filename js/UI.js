@@ -93,9 +93,10 @@ class UI {
                 </div>
             </div>`;
         container.insertAdjacentHTML('beforeend', html);
-
+        return borders;
+    }
+    createCountryBorders(borders) {
         const borderContainer = document.querySelector('.border-container');
-
         if (borders.length == 0) {
             return;
         } else {

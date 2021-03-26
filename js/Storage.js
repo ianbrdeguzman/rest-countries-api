@@ -21,6 +21,18 @@ class Storage {
             }
         );
     }
+    static findBorders(borders) {
+        const bordersName = [];
+        const countries = JSON.parse(localStorage.getItem('countries'));
+        countries.forEach((country) => {
+            borders.forEach((border) => {
+                if (country.alpha3Code == border) {
+                    bordersName.push(country.name);
+                }
+            });
+        });
+        return bordersName;
+    }
 }
 
 export default Storage;

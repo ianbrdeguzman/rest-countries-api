@@ -30,6 +30,7 @@ class App {
             const countries = await api.fetchCountries();
             this.DOMElements.container.innerHTML = '';
             countries.forEach((country) => {
+                console.log(country.alpha3Code);
                 ui.createCountry(country, this.DOMElements.container);
             });
             Storage.storeCountries(countries);
@@ -39,6 +40,9 @@ class App {
     filterByRegion() {
         this.DOMElements.select.addEventListener('change', async (e) => {
             this.DOMElements.container.innerHTML = '';
+            if (e.target.value == 'All') {
+                this.fetchCountries();
+            }
             const countries = Storage.getCountriesByRegion(e.target.value);
             countries.forEach((country) => {
                 ui.createCountry(country, this.DOMElements.container);
@@ -81,7 +85,12 @@ class App {
                     this.DOMElements.container
                 );
                 const countryDetails = Storage.findCountryDetail(country);
-                ui.createCountryModal(countryDetails, this.DOMElements.modal);
+                const borders = ui.createCountryModal(
+                    countryDetails,
+                    this.DOMElements.modal
+                );
+                const bordersName = Storage.findBorders(borders);
+                ui.createCountryBorders(bordersName);
                 this.hideCountryDetail();
             });
         });
